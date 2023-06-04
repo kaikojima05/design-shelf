@@ -45,7 +45,7 @@ export default function About() {
                         className={classNames(
                             `${
                                 theme === "bg-gray-black text-white"
-                                    ? "border-orange-300"
+                                    ? "border-purple"
                                     : "border-light-white"
                             }`,
                             "border-[3px] rounded-[50%] w-[6.5rem] h-[6.5rem] overflow-hidden shadow-2xl duration-300"
@@ -80,10 +80,17 @@ export default function About() {
             </Section>
             <Section isTopMargin={false}>
                 <ContentBox contentTitle="CONNECT">
-                    <Connect iconName={faGithub} href="/">
+                    <Connect
+                        iconName={faGithub}
+                        href="https://github.com/kaikojima05?tab=repositories"
+                    >
                         GITHUB
                     </Connect>
-                    <Connect iconName={faTwitter} isAfterNode={true} href="/">
+                    <Connect
+                        iconName={faTwitter}
+                        isAfterNode={true}
+                        href="https://twitter.com/kaikojima0724"
+                    >
                         TWITTER
                     </Connect>
                 </ContentBox>
@@ -123,18 +130,15 @@ function Connect({
     isAfterNode = false,
 }: ConnectProps) {
     return (
-        <div
-            className={classNames(
-                "flex items-center gap-4",
-                `${isAfterNode && "mt-3"}`
-            )}
-        >
-            <FontAwesomeIcon icon={iconName} className="w-6 h-6" />
-            <p>
-                <span>
-                    <a href={href}>{children}</a>
-                </span>
-            </p>
+        <div className={classNames(`${isAfterNode && "mt-3"}`, "text-purple")}>
+            <a className="flex items-center " href={href}>
+                <div className="w-[6rem]">
+                    <FontAwesomeIcon icon={iconName} className="w-6 h-6" />
+                </div>
+                <p>
+                    <span>{children}</span>
+                </p>
+            </a>
         </div>
     );
 }

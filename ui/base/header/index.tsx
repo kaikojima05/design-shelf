@@ -11,6 +11,11 @@ type HeaderProps = {
 
 export default function Header({ tailWindClassName }: HeaderProps) {
     const [theme, setTheme] = useState<boolean>(true);
+    const [anime, setAnime] = useState<string>("");
+    const [buttonDisable, setButtonDisable] = useState<boolean>(false);
+    const [isInitialMount, setIsInitialMount] = useState<boolean>(true);
+
+    const animateFlip = "animate-flip-vertical-right";
 
     const handelChangeBackgroundColor = useCallback(() => {
         setTheme((theme) => !theme);
@@ -20,6 +25,21 @@ export default function Header({ tailWindClassName }: HeaderProps) {
         document.body.className = theme
             ? "bg-gray-black text-white"
             : "bg-peach text-gray-black";
+    }, [theme]);
+
+    useEffect(() => {
+        if (isInitialMount) {
+            setIsInitialMount(false);
+        } else {
+            if (theme || !theme) {
+                setAnime(animateFlip);
+                setButtonDisable(true);
+                setTimeout(() => {
+                    setAnime("");
+                    setButtonDisable(false);
+                }, 700);
+            }
+        }
     }, [theme]);
 
     return (
@@ -37,7 +57,7 @@ export default function Header({ tailWindClassName }: HeaderProps) {
                         className={classNames(
                             `${
                                 theme
-                                    ? "bg-orange-300 text-white"
+                                    ? "bg-purple text-white"
                                     : "bg-gray-black text-orange-300"
                             }`,
                             "font-bold rounded-lg py-2 px-4 duration-300"
@@ -49,7 +69,7 @@ export default function Header({ tailWindClassName }: HeaderProps) {
                 <ul className="flex gap-8">
                     <li>
                         <Link
-                            href="/trash-list/"
+                            href="/design/"
                             className={classNames("font-silkscreen relative")}
                         >
                             DESIGN
@@ -74,20 +94,25 @@ export default function Header({ tailWindClassName }: HeaderProps) {
                     className={classNames(
                         `${
                             theme
-                                ? "bg-orange-300 text-white"
+                                ? "bg-purple text-white"
                                 : "bg-gray-black text-orange-300"
                         }`,
                         "py-2 px-4 rounded-lg duration-300",
-                        "focus: outline-none"
+                        "focus: outline-none",
+                        `${anime}`
                     )}
+                    disabled={buttonDisable}
                 >
                     {theme ? (
                         <FontAwesomeIcon
-                            icon={faLightbulb}
-                            className="w-5 h-5"
+                            icon={faTent}
+                            className={classNames("w-5 h-5")}
                         />
                     ) : (
-                        <FontAwesomeIcon icon={faTent} className="w-5 h-5" />
+                        <FontAwesomeIcon
+                            icon={faLightbulb}
+                            className={classNames("w-5 h-5")}
+                        />
                     )}
                 </button>
             </header>

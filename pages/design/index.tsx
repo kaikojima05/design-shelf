@@ -1,17 +1,13 @@
-import About from "@/ui/pages/about/index";
-import Header from "@/ui/base/header";
 import {
     BackgroundColorContext,
     useBodyColor,
 } from "@/ui/hooks/use-body-background-color-context";
-import Body from "@/ui/base/body";
+import Header from "@/ui/base/header";
 import Footer from "@/ui/base/footer";
+import Body from "@/ui/base/body";
 
-export default function Home() {
+export default function Design() {
     const [bodyColor, setBodyColor] = useBodyColor();
-
-    console.log(bodyColor);
-    console.log(setBodyColor);
 
     return (
         <>
@@ -19,9 +15,7 @@ export default function Home() {
                 value={{ theme: bodyColor, setTheme: setBodyColor }}
             >
                 <Header />
-                <Body>
-                    <About />
-                </Body>
+                <Body></Body>
                 <Footer />
             </BackgroundColorContext.Provider>
         </>

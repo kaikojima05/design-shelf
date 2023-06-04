@@ -19,7 +19,7 @@ export default function ContentBox({
     const backgroundColor = classNames(
         `${
             theme === "bg-gray-black text-white"
-                ? "bg-orange-300"
+                ? "bg-purple"
                 : "bg-gray-black text-orange-300"
         }`
     );
