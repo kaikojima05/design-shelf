@@ -76,15 +76,12 @@ export default function Header({ tailWindClassName }: HeaderProps) {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/" className="font-silkscreen">
+                        <Link href="/uses/" className="font-silkscreen">
                             USES
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            href="https://github.com/kojima-kai"
-                            className="font-silkscreen"
-                        >
+                        <Link href="https://github.com/kaikojima05/design-shelf">
                             GITHUB
                         </Link>
                     </li>
